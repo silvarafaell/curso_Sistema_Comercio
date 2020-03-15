@@ -19,11 +19,11 @@ namespace CamadaDados
         { 
             get
             {
-                return Idcategoria;
+                return _Idcategoria;
             }
             set
             {
-                Idcategoria = value;
+                _Idcategoria = value;
             }
         }
 
@@ -31,11 +31,11 @@ namespace CamadaDados
         {
             get
             {
-                return Nome;
+                return _Nome;
             }
             set
             {
-                Nome = value;
+                _Nome = value;
             }
         }
 
@@ -43,11 +43,11 @@ namespace CamadaDados
         {
             get
             {
-                return Descricao;
+                return _Descricao;
             }
             set
             {
-                Descricao = value;
+                _Descricao = value;
             }
         }
 
@@ -55,12 +55,60 @@ namespace CamadaDados
         {
             get
             {
-                return Descricao;
+                return _TextoBuscar;
             }
             set
             {
-                Descricao = value;
+                _TextoBuscar = value;
             }
+        }
+
+        //Construtor Vazio
+
+        public DCategoria()
+        {
+
+        }
+
+        //Construtor com Parametros
+
+        public DCategoria(int idcategoria, string nome, string descricao, string textobuscar)
+        {
+            this.Idcategoria = idcategoria;
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.TextoBuscar = textobuscar;
+
+        }
+
+        //Metodo Inserir
+        public string Inserir(DCategoria categoria)
+        {
+
+        }
+
+        //Metodo Editar
+        public string Editar(DCategoria categoria)
+        {
+
+        }
+
+        //Metodo Excluir
+        public string Excluir(DCategoria categoria)
+        {
+
+        }
+
+        //Metodo Mostrar
+        public DataTable Mostrar(DCategoria categoria)
+        {
+
+        }
+
+        //Metodo Buscar Nome
+        public string BuscarNome(DCategoria categoria)
+        {
+
         }
     }
 }
