@@ -84,7 +84,23 @@ namespace CamadaDados
         //Metodo Inserir
         public string Inserir(DCategoria categoria)
         {
+            string resp = "";//variavel resp
+            SqlConnection SqlCon = new SqlConnection(); //abrindo a conexao
+            try //usar o try quando se tratar conexao
+            {
+                //codigo
+                SqlCon.ConnectionString = Conexao.Cn;
+                SqlCon.Open();
+            }
+            catch(Exception ex)//se der algum erro executa o catch
+            {
+                resp = ex.Message;
+            }
 
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); //quando tem uma unica linha não precisa abir chaves
+            }
         }
 
         //Metodo Editar
