@@ -91,6 +91,14 @@ namespace CamadaDados
                 //codigo
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spinserir_categoria";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParIdcategoria = new SqlParameter();
+                ParIdcategoria.ParameterName = "@idcategoria";
             }
             catch(Exception ex)//se der algum erro executa o catch
             {
