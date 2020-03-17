@@ -99,8 +99,28 @@ namespace CamadaDados
 
                 SqlParameter ParIdcategoria = new SqlParameter();
                 ParIdcategoria.ParameterName = "@idcategoria";
+                ParIdcategoria.SqlDbType = SqlDbType.Int;
+                ParIdcategoria.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(ParIdcategoria);
+
+                SqlParameter ParNome = new SqlParameter();
+                ParNome.ParameterName = "@nome";
+                ParNome.SqlDbType = SqlDbType.VarChar;
+                ParNome.Size = 50;
+                ParNome.Value = categoria.Nome;
+                SqlCmd.Parameters.Add(ParNome);
+
+                SqlParameter ParDescricao = new SqlParameter();
+                ParDescricao.ParameterName = "@descricao";
+                ParDescricao.SqlDbType = SqlDbType.VarChar;
+                ParDescricao.Size = 100;
+                ParDescricao.Value = categoria.Descricao;
+                SqlCmd.Parameters.Add(ParDescricao);
+
+
+
             }
-            catch(Exception ex)//se der algum erro executa o catch
+            catch (Exception ex)//se der algum erro executa o catch
             {
                 resp = ex.Message;
             }
