@@ -189,13 +189,59 @@ namespace CamadaDados
         //Metodo Excluir
         public string Excluir(DCategoria categoria)
         {
+            string resp = "";//variavel resp
+            SqlConnection SqlCon = new SqlConnection(); //abrindo a conexao
+            try //usar o try quando se tratar conexao
+            {
+                //codigo
+                SqlCon.ConnectionString = Conexao.Cn;
+                SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spdeletar_categoria";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParIdcategoria = new SqlParameter();
+                ParIdcategoria.ParameterName = "@idcategoria";
+                ParIdcategoria.SqlDbType = SqlDbType.Int;
+                ParIdcategoria.Value = categoria.Idcategoria;
+                SqlCmd.Parameters.Add(ParIdcategoria);
+
+                
+                //Executar o comando
+
+                resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A exclusão não foi feita";
+
+            }
+            catch (Exception ex)//se der algum erro executa o catch
+            {
+                resp = ex.Message;
+            }
+
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); //quando tem uma unica linha não precisa abir chaves
+            }
+
 
         }
 
         //Metodo Mostrar
         public DataTable Mostrar(DCategoria categoria)
         {
+            DataTable DtResultado = new DataTable("categoria");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexao.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spmostrar_categoria";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
 
+            }
         }
 
         //Metodo Buscar Nome
