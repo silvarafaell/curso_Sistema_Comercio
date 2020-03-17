@@ -117,7 +117,9 @@ namespace CamadaDados
                 ParDescricao.Value = categoria.Descricao;
                 SqlCmd.Parameters.Add(ParDescricao);
 
+                //Executar o comando
 
+                resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "Registro não foi Inserido";
 
             }
             catch (Exception ex)//se der algum erro executa o catch
@@ -134,6 +136,53 @@ namespace CamadaDados
         //Metodo Editar
         public string Editar(DCategoria categoria)
         {
+            string resp = "";//variavel resp
+            SqlConnection SqlCon = new SqlConnection(); //abrindo a conexao
+            try //usar o try quando se tratar conexao
+            {
+                //codigo
+                SqlCon.ConnectionString = Conexao.Cn;
+                SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "speditar_categoria";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParIdcategoria = new SqlParameter();
+                ParIdcategoria.ParameterName = "@idcategoria";
+                ParIdcategoria.SqlDbType = SqlDbType.Int;
+                ParIdcategoria.Value = categoria.Idcategoria;
+                SqlCmd.Parameters.Add(ParIdcategoria);
+
+                SqlParameter ParNome = new SqlParameter();
+                ParNome.ParameterName = "@nome";
+                ParNome.SqlDbType = SqlDbType.VarChar;
+                ParNome.Size = 50;
+                ParNome.Value = categoria.Nome;
+                SqlCmd.Parameters.Add(ParNome);
+
+                SqlParameter ParDescricao = new SqlParameter();
+                ParDescricao.ParameterName = "@descricao";
+                ParDescricao.SqlDbType = SqlDbType.VarChar;
+                ParDescricao.Size = 100;
+                ParDescricao.Value = categoria.Descricao;
+                SqlCmd.Parameters.Add(ParDescricao);
+
+                //Executar o comando
+
+                resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A edição não foi feita";
+
+            }
+            catch (Exception ex)//se der algum erro executa o catch
+            {
+                resp = ex.Message;
+            }
+
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); //quando tem uma unica linha não precisa abir chaves
+            }
 
         }
 
