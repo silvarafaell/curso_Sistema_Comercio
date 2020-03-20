@@ -131,6 +131,8 @@ namespace CamadaDados
             {
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); //quando tem uma unica linha não precisa abir chaves
             }
+
+            return resp;
         }
 
         //Metodo Editar
@@ -184,6 +186,8 @@ namespace CamadaDados
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); //quando tem uma unica linha não precisa abir chaves
             }
 
+            return resp;
+
         }
 
         //Metodo Excluir
@@ -224,11 +228,13 @@ namespace CamadaDados
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); //quando tem uma unica linha não precisa abir chaves
             }
 
+            return resp;
+
 
         }
 
         //Metodo Mostrar
-        public DataTable Mostrar(DCategoria categoria)
+        public DataTable Mostrar()
         {
             DataTable DtResultado = new DataTable("categoria");
             SqlConnection SqlCon = new SqlConnection();
@@ -247,6 +253,8 @@ namespace CamadaDados
             {
                 DtResultado = null;//se der erro deixa nula
             }
+
+            return DtResultado;
         }
 
         //Metodo Buscar Nome
@@ -278,6 +286,8 @@ namespace CamadaDados
             {
                 DtResultado = null;
             }
+
+            return DtResultado;
 
         }
     }

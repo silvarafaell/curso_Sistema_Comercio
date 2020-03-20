@@ -10,12 +10,38 @@ namespace CamadaNegocio
 {
     public class NCategoria
     { 
+
+        //Método Inserir
         public static string Inserir(string nome, string descricao)
         {
             DCategoria obj = new CamadaDados.DCategoria();
             obj.Nome = nome;
             obj.Descricao = descricao;
             return obj.Inserir(obj);
+        }
+
+        //Método Editar
+        public static string Editar(int idcategoria, string nome, string descricao)
+        {
+            DCategoria obj = new CamadaDados.DCategoria();
+            obj.Idcategoria = idcategoria;
+            obj.Nome = nome;
+            obj.Descricao = descricao;
+            return obj.Editar(obj);
+        }
+
+        //Método Deletar
+        public static string Excluir(int idcategoria)
+        {
+            DCategoria obj = new CamadaDados.DCategoria();
+            obj.Idcategoria = idcategoria;
+            return obj.Excluir(obj);
+        }
+
+        //Método Mostrar
+        public static DataTable Mostrar()
+        {
+            return new DCategoria().Mostrar();
         }
     }
 }
