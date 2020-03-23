@@ -23,6 +23,50 @@ namespace CamadaApresentacao
             this.ttMensagem.SetToolTip(this.txtNome, "Insira o nome da Categoria");
         }
 
+        //Mostrar Mensagem de Confirmação
+        private void MensagemOK(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Sistema Comércio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Mostrar Mensagem de Erro
+        private void MensagemErro(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Sistema Comércio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        //Limpar Campos
+        private void Limpar()
+        {
+            this.txtNome.Text = string.Empty;
+            this.txtIdCategoria.Text = string.Empty;
+            this.txtDescricao.Text = string.Empty;
+            this.txtNome.Text = string.Empty;
+        }
+
+        //Habilitar os text box
+        private void Habilitar(bool valor)
+        {
+            this.txtNome.ReadOnly = !valor;
+            this.txtDescricao.ReadOnly = !valor;
+            this.txtIdCategoria.ReadOnly = !valor;
+        }
+
+        //Habilitar os botoes
+        private void botoes()
+        {
+            if(this.eNovo || this.eEditar)
+            {
+
+            }
+            this.txtNome.ReadOnly = !valor;
+            this.txtDescricao.ReadOnly = !valor;
+            this.txtIdCategoria.ReadOnly = !valor;
+        }
+
+
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 
