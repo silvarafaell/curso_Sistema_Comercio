@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CamadaNegocio;
 
 namespace CamadaApresentacao
 {
     public partial class frmCategoria : Form
     {
+
+        private bool eNovo = false;
+        private bool eEditar = false;
+
         public frmCategoria()
         {
             InitializeComponent();
+            this.ttMensagem.SetToolTip(this.txtNome, "Insira o nome da Categoria");
         }
 
         private void label1_Click(object sender, EventArgs e)
