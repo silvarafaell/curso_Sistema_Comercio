@@ -57,16 +57,29 @@ namespace CamadaApresentacao
         {
             if(this.eNovo || this.eEditar)
             {
-
+                this.Habilitar(true);
+                this.btnNovo.Enabled = false;
+                this.btnSalvar.Enabled = true;
+                this.btnEditar.Enabled = false;
+                this.btnCancelar.Enabled = true;
             }
-            this.txtNome.ReadOnly = !valor;
-            this.txtDescricao.ReadOnly = !valor;
-            this.txtIdCategoria.ReadOnly = !valor;
+            else
+            {
+                this.Habilitar(false);
+                this.btnNovo.Enabled = true;
+                this.btnSalvar.Enabled = false;
+                this.btnEditar.Enabled = true;
+                this.btnCancelar.Enabled = false;
+            }
         }
 
+        //ocultas as colunas do grid
+        private void ocultarColunas()
+        {
+            this.dataLista.Columns[0].Visible = false;
+            this.dataLista.Columns[1].Visible = false;
 
-
-
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
