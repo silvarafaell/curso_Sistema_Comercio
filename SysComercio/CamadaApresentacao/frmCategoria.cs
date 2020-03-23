@@ -80,6 +80,23 @@ namespace CamadaApresentacao
             this.dataLista.Columns[1].Visible = false;
 
         }
+
+        //Mostrar no Data Grid
+        private void Mostrar()
+        {
+            this.dataLista.DataSource = NCategoria.Mostrar();
+            this.ocultarColunas();
+            lblTotal.Text = "Total de Registros: " + Convert.ToString(dataLista.Rows.Count);
+        }
+
+        //Buscar pelo Nome
+        private void BuscarNome()
+        {
+            this.dataLista.DataSource = NCategoria.BuscarNome(this.txtBuscar.Text);
+            this.ocultarColunas();
+            lblTotal.Text = "Total de Registros: " + Convert.ToString(dataLista.Rows.Count);
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -148,6 +165,15 @@ namespace CamadaApresentacao
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmCategoria_Load(object sender, EventArgs e)
+        {
+            this.Top = 0;
+            this.Left = 0;
+            this.Mostrar();
+            this.Habilitar(false);
+            this.botoes();
         }
     }
 }

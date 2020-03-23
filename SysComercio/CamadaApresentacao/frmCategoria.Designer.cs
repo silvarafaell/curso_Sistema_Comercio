@@ -336,6 +336,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCategoria";
             this.Text = "Cadastro de Categorias";
+            this.Load += new System.EventHandler(this.frmCategoria_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
